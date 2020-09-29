@@ -13,25 +13,30 @@ const rl = readline.createInterface({
 // MY CODE
 const pigLatin = (word) => {
   const vowel = ["a", "e", "i", "o", "u"];
+  word = word.toLowerCase().trim();
+  let vowelFound = false;
+  let inputArray = word.split(" ");
 
-  if (!vowel.includes(word[0])) {
-    let splitIndex;
-    let vowelFound = false;
+  for (let i = 0; i < inputArray.length; i++) {
+    if (!vowel.includes(inputArray[i][0])) {
+      for (let j = 0; j < inputArray[i].length; j++) {
+        if (vowel.includes(inputArray[i][j]) && vowelFound === false) {
+          let firstHalf = inputArray[i].substring(0, j);
+          let secondHalf = inputArray[i].substring(j);
+          inputArray[i] = secondHalf + firstHalf + "ay";
 
-    for (let i = 0; i < word.length; i++) {
-      if (vowel.includes(word[i]) && vowelFound === false) {
-        splitIndex = i;
-        vowelFound = true;
+          vowelFound = true;
+        } else {
+          // IF NO VOWELS ARE FOUND
+        }
       }
+      vowelFound = false;
+    } else {
+      inputArray[i] = inputArray[i] + "yay";
     }
-
-    let firstHalf = word.substring(0, splitIndex);
-    let secondHalf = word.substring(splitIndex);
-
-    return secondHalf + firstHalf + "ay";
-  } else {
-    return word + "yay";
   }
+
+  return inputArray.join(" ");
 };
 
 // the first function called in the program to get an input from the user
