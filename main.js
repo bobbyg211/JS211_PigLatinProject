@@ -26,15 +26,18 @@ const pigLatin = (word) => {
           inputArray[i] = secondHalf + firstHalf + "ay";
 
           vowelFound = true;
-        } else {
-          // IF NO VOWELS ARE FOUND
         }
+      }
+      if (vowelFound === false) {
+        inputArray[i] = inputArray[i] + "yay";
       }
       vowelFound = false;
     } else {
       inputArray[i] = inputArray[i] + "yay";
     }
   }
+
+  // SOMEHOW MOVE PUNCTUATION TO THE END
 
   return inputArray.join(" ");
 };
