@@ -17,9 +17,13 @@ const pigLatin = (word) => {
   let vowelFound = false;
   let inputArray = word.split(" ");
 
+  // Loop over array of every word entered
   for (let i = 0; i < inputArray.length; i++) {
+    // Check of first letter of word is NOT a vowel
     if (!vowel.includes(inputArray[i][0])) {
+      // Loop over individual letters in a word to find first vowel
       for (let j = 0; j < inputArray[i].length; j++) {
+        // Run if vowel is found at particular letter index, if one has not been found already
         if (vowel.includes(inputArray[i][j]) && vowelFound === false) {
           let firstHalf = inputArray[i].substring(0, j);
           let secondHalf = inputArray[i].substring(j);
@@ -28,10 +32,12 @@ const pigLatin = (word) => {
           vowelFound = true;
         }
       }
+      // Run if word has NO vowels
       if (vowelFound === false) {
         inputArray[i] = inputArray[i] + "yay";
       }
       vowelFound = false;
+      // Run if word starts with a vowel
     } else {
       inputArray[i] = inputArray[i] + "yay";
     }
